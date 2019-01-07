@@ -76,9 +76,10 @@ if(MPI_FOUND)
       set_target_properties ( eigensolver_mpi PROPERTIES LINK_FLAGS "${MPI_LINK_FLAGS}")
       target_link_libraries(eigensolver_mpi cudart amgxsh ${omp_lib} ${MPI_C_LIBRARIES})
     ENDIF(WIN32) 
-    
-    if(MPI_COMPILE_FLAGS)
-      set_target_properties(eigensolver_mpi PROPERTIES COMPILE_FLAGS "${MPI_COMPILE_FLAGS}")
-    endif(MPI_COMPILE_FLAGS)
+
+    if(MPI_C_COMPILE_FLAGS)
+      string(REPLACE ";" " " MPI_C_COMPILE_FLAGS "${MPI_C_COMPILE_FLAGS}")
+      set_target_properties(eigensolver_mpi PROPERTIES COMPILE_FLAGS "${MPI_C_COMPILE_FLAGS}")
+    endif(MPI_C_COMPILE_FLAGS)
 
 endif(MPI_FOUND)
