@@ -136,14 +136,14 @@ if(MPI_FOUND)
 
     ENDIF(WIN32)
     
-    string(REPLACE ";" " " MPI_C_COMPILE_FLAGS "${MPI_C_COMPILE_FLAGS}")
-    message("MPI_C_COMPILE_FLAGS: ${MPI_C_COMPILE_FLAGS}")
+
     if(MPI_C_COMPILE_FLAGS)
+      string(REPLACE ";" " " MPI_C_COMPILE_FLAGS "${MPI_C_COMPILE_FLAGS}")
       set_target_properties(amgx_mpi_capi PROPERTIES COMPILE_FLAGS "${MPI_C_COMPILE_FLAGS}")
       set_target_properties(amgx_mpi_capi_agg PROPERTIES COMPILE_FLAGS "${MPI_C_COMPILE_FLAGS}")
       set_target_properties(amgx_mpi_capi_cla PROPERTIES COMPILE_FLAGS "${MPI_C_COMPILE_FLAGS}")
       set_target_properties(amgx_mpi_poisson7 PROPERTIES COMPILE_FLAGS "${MPI_C_COMPILE_FLAGS}")
-    endif(MPI_COMPILE_FLAGS)
+    endif(MPI_C_COMPILE_FLAGS)
 
 endif(MPI_FOUND)
 
